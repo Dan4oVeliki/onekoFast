@@ -1,5 +1,3 @@
-// oneko.js: https://github.com/adryd325/oneko.js
-
 (function oneko() {
   const isReducedMotion =
     window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
@@ -20,7 +18,7 @@
   let idleAnimation = null;
   let idleAnimationFrame = 0;
 
-  const nekoSpeed = 2;
+  const nekoSpeed = 23;
   const spriteSets = {
     idle: [[-3, -3]],
     alert: [[-7, -3]],
@@ -96,10 +94,10 @@
     nekoEl.style.top = `${nekoPosY - 16}px`;
     nekoEl.style.zIndex = Number.MAX_VALUE;
 
-    let nekoFile = "./oneko.gif"
-    const curScript = document.currentScript
+    let nekoFile = "./oneko.gif";
+    const curScript = document.currentScript;
     if (curScript && curScript.dataset.cat) {
-      nekoFile = curScript.dataset.cat
+      nekoFile = curScript.dataset.cat;
     }
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
@@ -123,9 +121,9 @@
     if (!lastFrameTimestamp) {
       lastFrameTimestamp = timestamp;
     }
-    if (timestamp - lastFrameTimestamp > 100) {
-      lastFrameTimestamp = timestamp
-      frame()
+    if (timestamp - lastFrameTimestamp > 50) { // Change interval to 50ms for faster frames
+      lastFrameTimestamp = timestamp;
+      frame();
     }
     window.requestAnimationFrame(onAnimationFrame);
   }
